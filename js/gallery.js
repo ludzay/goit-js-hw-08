@@ -63,7 +63,6 @@ const images = [
     description: "Lighthouse Coast Sea",
   },
 ];
-
 const container = document.querySelector(".gallery");
 function createImageMarkup(image) {
   const markup = `<li class="gallery-item">
