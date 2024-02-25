@@ -103,11 +103,3 @@ container.addEventListener("click", (event) => {
   console.log(currentModal);
   currentModal.show();
 });
-
-document.addEventListener("keyup", ({ code }) => {
-  if (code !== "Escape") {
-    return;
-  }
-
-  currentModal.close();
-});
