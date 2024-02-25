@@ -3,12 +3,12 @@
 *::after {box-sizing: border-box;
 }
 
-.gallery{
+.gallery {
     list-style: none;
     display: flex;
     gap: 8px;
     flex-wrap:wrap;
-   
+  
     
 
 }
