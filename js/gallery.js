@@ -64,6 +64,7 @@ const images = [
   },
 ];
 const container = document.querySelector(".gallery");
+
 function createImageMarkup(image) {
   const markup = `<li class="gallery-item">
       <a class="gallery-link" href="${image.original}">
@@ -80,7 +81,7 @@ function createImageMarkup(image) {
 }
 
 let markup = "";
-let i = 1;
+
 for (let image of images) {
   markup += createImageMarkup(image);
 }
@@ -92,7 +93,6 @@ container.addEventListener("click", (event) => {
 
   const AltClicked = event.target.alt;
   const CurrentImage = event.target.dataset.source;
-  //const CurrentImage = images.find((image) => image.description == AltClicked);
 
   const currentModal = basicLightbox.create(
     `<div class="modal">
@@ -101,8 +101,6 @@ container.addEventListener("click", (event) => {
       </div>`
   );
 
-  console.log(currentModal);
-
   if (!currentModal.visible()) {
     currentModal.show();
 
@@ -110,6 +108,11 @@ container.addEventListener("click", (event) => {
       if (event.code === "Escape" && currentModal.visible()) {
         currentModal.close();
       }
+    });
+
+    const modal = document.querySelector(".modal");
+    modal.addEventListener("click", (event) => {
+      currentModal.close();
     });
   }
 });
