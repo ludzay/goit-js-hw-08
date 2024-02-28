@@ -89,17 +89,27 @@ container.innerHTML = markup;
 
 container.addEventListener("click", (event) => {
   event.preventDefault();
+
   const AltClicked = event.target.alt;
-  const CurrentImage = images.find((image) => image.description == AltClicked);
-  console.log(CurrentImage.original);
+  const CurrentImage = event.target.dataset.source;
+  //const CurrentImage = images.find((image) => image.description == AltClicked);
 
   const currentModal = basicLightbox.create(
     `<div class="modal">
-           <img src="${CurrentImage.original}" alt="${CurrentImage.description}">
-           width='1112'
-           height='640'
+           <img class="modal-image" src="${CurrentImage}" alt="${AltClicked}">
+           
       </div>`
   );
+
   console.log(currentModal);
-  currentModal.show();
+
+  if (!currentModal.visible()) {
+    currentModal.show();
+
+    document.addEventListener("keydown", (event) => {
+      if (event.code === "Escape" && currentModal.visible()) {
+        currentModal.close();
+      }
+    });
+  }
 });
